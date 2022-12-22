@@ -1,0 +1,255 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static '/sign_up.css' %}">
+        <title>Nautillus - Sign up</title>
+        <script src="sign_up.js"></script>
+    </head>
+    <body>
+        <style>
+body {
+    /* Colors */
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Setting up required things */
+@font-face {
+    font-family: "FiraCode";
+    src: url("Fonts/FiraCode.ttf");
+}
+
+@keyframes typing {
+    from { width : 0 }
+    to { width : 13% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+}
+
+/* Items from MainBar */
+#MainText {
+    /* Colors */
+    color: white;
+
+    /* Font */
+    font-family: "FiraCode";
+}
+
+/* Buttons */
+#SignIn {
+    /* Colors */
+    background-color: transparent;
+    color: white;
+
+    /* Font */
+    font-size: 17px;
+    text-decoration: none;
+    text-align: center;
+    padding-inline: 10px;
+    font-family: "FiraCode";
+
+    /* Margin and Padding */
+    padding: 17px, 18px;
+    margin: 5px;
+    height: 40px;
+
+    /* Border */
+    border: 2px solid white;
+    border-radius: 28px;
+
+    /* Display */
+    display: inline-block;
+
+    /* Cursor */
+    cursor: pointer;
+
+    /* Transition */
+    transition: 1.5s;
+}
+
+#SignIn:hover {
+    /* Colors */
+    background-color: white;
+    color: black;
+
+    /* Transition */
+    transition: 1.5s;
+}
+
+/* Inputs */
+#id_email {
+    /* Colors */
+    background-color: transparent;
+    color: white;
+
+    /* Border */
+    border: 2px solid white;
+    border-radius: 28px;
+    outline: none;
+
+    /* Text */
+    padding-inline: 10px;
+    font-family: "FiraCode";
+
+    /* Width and Height */
+    height: 35px;
+    width: 200px;
+
+    /* Margin and Padding */
+    margin: 10px;
+}
+
+#id_username {
+    /* Colors */
+    background-color: transparent;
+    color: white;
+
+    /* Border */
+    border: 2px solid white;
+    border-radius: 28px;
+    outline: none;
+
+    /* Text */
+    padding-inline: 10px;
+    font-family: "FiraCode";
+
+    /* Width and Height */
+    height: 35px;
+    width: 200px;
+
+    /* Margin and Padding */
+    margin: 10px;
+}
+
+#id_password1 {
+    /* Colors */
+    background-color: transparent;
+    color: white;
+
+    /* Border */
+    border: 2px solid white;
+    border-radius: 28px;
+    outline: none;
+
+    /* Text */
+    padding-inline: 10px;
+    font-family: "FiraCode";
+
+    /* Width and Height */
+    height: 35px;
+    width: 200px;
+
+    /* Margin and Padding */
+    margin: 10px;
+}
+
+#id_password2 {
+    /* Colors */
+    background-color: transparent;
+    color: white;
+
+    /* Border */
+    border: 2px solid white;
+    border-radius: 28px;
+    outline: none;
+
+    /* Text */
+    padding-inline: 10px;
+    font-family: "FiraCode";
+
+    /* Width and Height */
+    height: 35px;
+    width: 200px;
+
+    /* Margin and Padding */
+    margin: 10px;
+}
+
+/* Items from MainBar */
+#MainText {
+    /* Color */
+    color: white;
+
+    /* Font */
+    font-family: "FiraCode";
+
+    /* Margin and Padding */
+    margin: auto;
+
+    /* Height and Width */
+    width: 0;
+
+    /* Animations */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid white;
+    letter-spacing: .15em;
+    animation: 
+        typing 3s forwards,
+        blink-caret .75s step-end infinite;
+}
+
+#Border {
+    /* Colors */
+    background-color: transparent;
+
+    /* Border */
+    border-radius: 20px;
+    border: 5px solid white;
+
+    /* Width and Height */
+    width: 500px;
+    height: 200px;
+    text-align: center;
+
+    /* Margin and Padding */
+    margin: 20px;
+    padding: 20px;
+}
+
+.messages{
+    color: white;
+}
+        </style>
+        <h1 id="MainText" align="center">Sign up</h1>
+        <div class="ToCenter" align="center">
+            <div id="Border">
+                <form method="post">{% csrf_token %}
+                    <div align="center">
+                        {{form.username}} 
+
+                        {{form.email}}
+                    </div>
+                    <table align="center">
+                        <tr>
+                            <th>
+                                {{form.password1}}
+                            </th>
+                            <th>
+                                {{form.password2}}
+                            </th>
+                        </tr>
+                    </table>
+                    <div align="center">
+                        <input type="submit" id="SignIn" value="Sign up">
+                    </div>
+                </form>
+            {% if messages %}
+                {% for message in messages %}
+                <div class="messages">
+                  {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+    </body>
+</html>
